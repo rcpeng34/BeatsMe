@@ -6,66 +6,45 @@ var exploreController = function($scope, $http, checkLogin){
       checkLogin.beatsOauth();
     }
   var token = checkLogin.getToken();
+  var featuredDone = false;
+  var ePicksDone = false;
   $scope.highlights = [];
 
   $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/featured?client_id=' + key})
-    .success(function(data, status, headers, config){
+    .success(function(data){
       console.log('featured loaded');
       $scope.highlights = $scope.highlights.concat(data.data);
-      for (var i = 0; i < data.data.length; i++){
-        if ($scope.highlights[i].content.id.substring(0,2) === 'pl'){
-          $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/playlists/' + $scope.highlights[i].content.id + '/images/default?client_id=' + key})
-            .success(function(data, status, headers, config){
-              $scope.highlights[i].img = data;
-            })
-            .error(function(data, status, headers, config){
-              console.log('error', status, '|', data);
-            });
-        } else {
-          $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/albums/' + $scope.highlights[i].content.id + '/images/default?client_id=' + key})
-            .success(function(data, status, headers, config){
-              $scope.highlights[i].img = data;
-            })
-            .error(function(data, status, headers, config){
-              console.log('error', status, '|', data);
-            });
-        }
-      }
-      console.log($scope.highlights)
+      console.log($scope.highlights);
+      featuredDone = true;
+      bothDone();
     })
-    .error(function(data, status, headers, config){
+    .error(function(data){
       console.log('error|', data);
     });
   $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/editor_picks?client_id=' + key})
-    .success(function(data, status, headers, config){
+    .success(function(data){
       console.log('editor picks loaded');
       $scope.highlights = $scope.highlights.concat(data.data);
-      console.log($scope.highlights)
+      console.log($scope.highlights);
+      ePicksDone = true;
+      bothDone();
     })
-    .error(function(data, status, headers, config){
+    .error(function(data){
       console.log('error|', data);
     });
-  // loop through highlights and associate an image
-  for (var i=0; i<$scope.highlights.length; i++){
-    // assume that the highlight is either a playlist or an album
-    if ($scope.highlights[i].content.id.substring(0,2) === 'pl'){
-      $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/playlists/' + $scope.highlights[i].content.id + '/images/default?client_id=' + key})
-        .success(function(data, status, headers, config){
-          $scope.highlights[i].img = data;
-        })
-        .error(function(data, status, headers, config){
-          console.log('error', status, '|', data);
-        });
-    } else {
-      $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/albums/' + $scope.highlights[i].content.id + '/images/default?client_id=' + key})
-        .success(function(data, status, headers, config){
-          $scope.highlights[i].img = data;
-        })
-        .error(function(data, status, headers, config){
-          console.log('error', status, '|', data);
-        });
+  // helper to add tag of playlist or album to each object
+  var bothDone = function(){
+    if (featuredDone && ePicksDone) {
+      for (var i = 0; i < $scope.highlights.length; i++) {
+        if ($scope.highlights[i].content.id.substring(0,2) === 'pl'){
+          // it's a playlist
+          $scope.highlights[i].musicType = 'playlist';
+        } else if ($scope.highlights[i].content.id.substring(0,2) === 'al') {
+          $scope.highlights[i].musicType = 'album';
+        }
+      }
     }
-  }
+  };
 };
 
 angular.module('beatsMeApp')
