@@ -1,10 +1,12 @@
 'use strict';
 
+var loginController = function ($scope, checkLogin) {
+  $scope.OAuth = checkLogin.beatsOauth;
+  if (!checkLogin.getToken()){
+    checkLogin.beatsOauth();
+  }
+  var token = checkLogin.getToken();
+};
+
 angular.module('beatsMeApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('loginController', ['$scope', 'checkLogin', loginController]);
