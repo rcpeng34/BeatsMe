@@ -1,42 +1,9 @@
-<div>
-  <script>    
-    var bam = new BeatsAudioManager("myBeatsPlayer");
-      bam.on("ready", handleReady);
-      bam.on("error", handleError);
-      function handleReady(value) { 
-          bam.clientId = BPMYBFZWBFY84MGF8GEWHG4W;
-          bam.authentication = {
-              access_token:fk6yt97tusxke9gn8bf7udv5, 
-              user_id:R_Peng
-          };
-          bam.identifier = tr72326023;
-          bam.load();
-      };
-      function handleError(value) {
-          console.log("Error: " + value);
-          switch(value){
-              case "auth":
-              // Beats Music API auth error (401)
-              break;
-              case "connectionfailure":
-              // audio stream connection failure
-              break;
-              case "apisecurity":
-              // Beats Music API crossdomain error
-              break;
-              case "streamsecurity":
-              // audio stream crossdomain error
-              break;
-              case "streamio":
-              // audio stream io error
-              break;
-              case "apiio":
-              // Beats Music API io error getting track data
-              break;
-              case "flashversion":
-              // flash version too low or not installed
-              break;
-          }
-      };
-  </script>
+<div class="tile" ng-repeat="highlight in highlights">
+  <h4>{{highlight.content.type}}</h4>
+  <p>{{highlight.content.name}}{{highlight.content.title}}</p>
+  <p>{{highlight.blurb[0]}}</p>
+  <p>{{highlight.blurb[1]}}</p>
+  <p>{{highlight.blurb[2]}}</p>
+  <p>{{highlight.content.description}}</p>
+  <h2>{{highlight.img}}</h2>
 </div>
