@@ -16,6 +16,10 @@ angular
         templateUrl: 'views/explore.html',
         controller: 'ExploreCtrl'
       })
+      .when('/sentence', {
+        templateUrl: 'views/sentence.html',
+        controller: 'SentenceCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
