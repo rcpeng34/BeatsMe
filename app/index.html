@@ -54,6 +54,11 @@
     </nav>
     <div class="container" ng-view=""></div>
 
+    <!-- Beats player div -->
+    <div class="beatsPlayer" ng-controller="PlayerCtrl as player">
+      <button ng-click="play()">Play</button>
+      <button ng-click="pause()">Pause</button>
+    </div>
 
     <div class="footer">
       <a href='http://richardpeng.io' target='_blank'><span class="glyphicon glyphicon-user"></span> Created by Richard Peng</a>
@@ -79,6 +84,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/services/checklogin.js"></script>
         <script src="scripts/controllers/explore.js"></script>
+        <script src="scripts/controllers/player.js"></script>
         <!-- endbuild -->
     <script src="http://bam.cdn.beatsmusic.com/bam-1.0.2.min.js"></script>    
 </body>
