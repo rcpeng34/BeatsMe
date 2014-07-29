@@ -2,8 +2,6 @@
 
 angular.module('beatsMeApp')
   .factory('checkLogin', function () {
-    // Service logic
-
     // Public API here
     return {
       getToken: function () {

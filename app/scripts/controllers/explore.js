@@ -14,9 +14,7 @@ var exploreController = function($scope, $http, checkLogin, songqueue){
 
   $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/featured?client_id=' + key})
     .success(function(data){
-      console.log('featured loaded');
       $scope.highlights = $scope.highlights.concat(data.data);
-      console.log($scope.highlights);
       featuredDone = true;
       bothDone();
     })
@@ -25,7 +23,6 @@ var exploreController = function($scope, $http, checkLogin, songqueue){
     });
   $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/editor_picks?client_id=' + key})
     .success(function(data){
-      console.log('editor picks loaded');
       $scope.highlights = $scope.highlights.concat(data.data);
       console.log($scope.highlights);
       ePicksDone = true;
@@ -54,11 +51,10 @@ var exploreController = function($scope, $http, checkLogin, songqueue){
     songqueue.clear();
     // refObj for playlist has author:obj|tracks:array|user:obj
     // refObj for album has artist:array|label:obj|tracks:array
-    console.log('inside explore play');
     for (var i = 0; i < refObj.tracks.length; i++){
       songqueue.add(refObj.tracks[i].id);
     }
-    songqueue.load();
+    songqueue.next();
   };
 };
 
