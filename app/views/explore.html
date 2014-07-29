@@ -6,6 +6,6 @@
   <p>{{highlight.blurb[2]}}</p>
   <p>{{highlight.content.description}}</p>
   <h2>{{highlight.img}}</h2>
-  <img ng-if="highlight.musicType === 'playlist'" src="https://partner.api.beatsmusic.com/v1/api/playlists/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
-  <img ng-if="highlight.musicType === 'album'" src="https://partner.api.beatsmusic.com/v1/api/albums/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
+  <img ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'playlist'" src="https://partner.api.beatsmusic.com/v1/api/playlists/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
+  <img ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'album'" src="https://partner.api.beatsmusic.com/v1/api/albums/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
 </div>
