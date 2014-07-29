@@ -50,20 +50,16 @@ var songqueue = function(checkLogin){
       playlist.push(beatsID);
     },
     load: function(){
-      console.log('inside songqueue load');
       console.log(playlist);
       if (playlist.length > 0){
         bam.identifier = playlist.shift();
-        console.log('bam identifier', bam.identifier);
         bam.load();
       }
     },
     pause: function(){
-      console.log('inside sonqueue pause');
       bam.pause();
     },
     play: function(){
-      console.log('inside songqueue play');
       bam.play();
     },
     clear: function(){
