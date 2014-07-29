@@ -1,7 +1,7 @@
 'use strict';
 
-var songqueue = function(checkLogin){
-  var playlist = [];
+var songqueue = function($rootScope, checkLogin){
+  var playList = [];
   var finishList = [];
 
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
@@ -50,10 +50,11 @@ var songqueue = function(checkLogin){
   bam.playNext = function(){
     bam.stop();
     finishList.push(bam.identifier);
-    if (playlist.length > 0){
-      bam.identifier = playlist.shift();
+    if (playList.length > 0){
+      bam.identifier = playList.shift();
       bam.load();
     }
+    $rootScope.$broadcast('playerChanged', [finishList[finishList.length-1], bam.identifier, playList[0]]);
   };
 
   bam.playPrevious = function(){
@@ -61,10 +62,11 @@ var songqueue = function(checkLogin){
     // if this was invoked within 3 seconds of the song start, play the previous song
     if (bam.currentTime < 4 && finishList.length>0){
       // put current song back into the queue
-      playlist.unshift(bam.identifier);
+      playList.unshift(bam.identifier);
       bam.identifier = finishList.pop();
     }
     bam.load();
+    $rootScope.$broadcast('playerChanged', [finishList[finishList.length-1], bam.identifier, playList[0]]);
   };
 
   bam.on('ended', function(){
@@ -73,7 +75,7 @@ var songqueue = function(checkLogin){
   
   return {
     add: function(beatsID){
-      playlist.push(beatsID);
+      playList.push(beatsID);
     },
     previous: function(){
       bam.playPrevious();
@@ -88,10 +90,14 @@ var songqueue = function(checkLogin){
       bam.play();
     },
     clear: function(){
-      playlist = [];
+      playList = [];
+    },
+    get: function(){
+      // returns an array of track ID [just_played, current, next]
+      return [finishList[finishList.length-1], bam.identifier, playList[0]];
     }
   };
 };
 
 angular.module('beatsMeApp')
-  .factory('songqueue', ['checkLogin', songqueue]);
+  .factory('songqueue', ['$rootScope','checkLogin', songqueue]);

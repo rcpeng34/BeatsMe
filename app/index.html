@@ -56,6 +56,11 @@
 
     <!-- Beats player div -->
     <div class="beatsPlayer" ng-controller="PlayerCtrl as player">
+      <div>
+        <h5 ngModel="$scope">Previous: {{songArray[0]}}</h5>
+        <h5 ngModel="$scope">Current: {{songArray[1]}}</h5>
+        <h5 ngModel="$scope">Next: {{songArray[2]}}</h5>
+      </div>
       <button ng-click="previous()">Prev</button>
       <button ng-click="play()">Play</button>
       <button ng-click="pause()">Pause</button>
