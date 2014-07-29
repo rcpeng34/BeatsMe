@@ -2,6 +2,8 @@
 
 var songqueue = function(checkLogin){
   var playlist = [];
+  var finishList = [];
+
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
       checkLogin.beatsOauth();
@@ -16,7 +18,6 @@ var songqueue = function(checkLogin){
       bam.authentication = {
           access_token:[token]
       };
-      bam.load('tr92961795');
   }
   function handleError(value) {
       console.log("Error: " + value);
@@ -45,16 +46,40 @@ var songqueue = function(checkLogin){
       }
   }
 
+
+  bam.playNext = function(){
+    bam.stop();
+    finishList.push(bam.identifier);
+    if (playlist.length > 0){
+      bam.identifier = playlist.shift();
+      bam.load();
+    }
+  };
+
+  bam.playPrevious = function(){
+    bam.stop();
+    // if this was invoked within 3 seconds of the song start, play the previous song
+    if (bam.currentTime < 4 && finishList.length>0){
+      // put current song back into the queue
+      playlist.unshift(bam.identifier);
+      bam.identifier = finishList.pop();
+    }
+    bam.load();
+  };
+
+  bam.on('ended', function(){
+    bam.playNext();
+  });
+  
   return {
     add: function(beatsID){
       playlist.push(beatsID);
     },
-    load: function(){
-      console.log(playlist);
-      if (playlist.length > 0){
-        bam.identifier = playlist.shift();
-        bam.load();
-      }
+    previous: function(){
+      bam.playPrevious();
+    },
+    next: function(){
+      bam.playNext();
     },
     pause: function(){
       bam.pause();
