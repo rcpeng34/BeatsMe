@@ -1,4 +1,4 @@
 BeatsMe
 =======
 
-Beats 
+Beats Music Code Challenge
