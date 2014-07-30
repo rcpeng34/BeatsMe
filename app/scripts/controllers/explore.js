@@ -48,6 +48,7 @@ var exploreController = function($scope, $http, checkLogin, songqueue){
 
   $scope.play = function(beatsID, refObj){
     // clear queue
+    songqueue.sentenceOff();
     songqueue.clear();
     // refObj for playlist has author:obj|tracks:array|user:obj
     // refObj for album has artist:array|label:obj|tracks:array

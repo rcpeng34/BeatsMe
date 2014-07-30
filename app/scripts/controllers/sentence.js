@@ -31,6 +31,7 @@ var sentenceController = function ($scope, $http, checkLogin, songqueue){
 
   $scope.playSentence = function(){
     if ($scope.place && $scope.activity && $scope.person && $scope.genre){
+      songqueue.sentenceOn();
       $http({method: 'post', url: 'https://partner.api.beatsmusic.com/v1/api/users/' + userID + '/recs/the_sentence?'
         + 'place=' + $scope.place.id
         + '&activity=' + $scope.activity.id

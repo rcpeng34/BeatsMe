@@ -9,6 +9,7 @@ var songqueue = function($rootScope, checkLogin){
       checkLogin.beatsOauth();
     }
   var token = checkLogin.getToken();
+  var sentence = false;
 
   var bam = new BeatsAudioManager('myBeatsPlayer');
   bam.on("ready", handleReady);
@@ -74,6 +75,14 @@ var songqueue = function($rootScope, checkLogin){
   });
   
   return {
+    sentenceOn: function(){
+      sentence = true;
+      console.log(sentence);
+    },
+    sentenceOff: function(){
+      sentence = false;
+      console.log(sentence);
+    },
     add: function(beatsID){
       playList.push(beatsID);
     },
