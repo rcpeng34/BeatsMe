@@ -1,6 +1,7 @@
 'use strict';
 
-var loginController = function ($scope, checkLogin) {
+var loginController = function ($rootScope, $scope, checkLogin) {
+  $rootScope.bodyClass = 'login';
   $scope.OAuth = checkLogin.beatsOauth;
   if (!checkLogin.getToken()){
     checkLogin.beatsOauth();
@@ -9,4 +10,4 @@ var loginController = function ($scope, checkLogin) {
 };
 
 angular.module('beatsMeApp')
-  .controller('loginController', ['$scope', 'checkLogin', loginController]);
+  .controller('loginController', ['$rootScope', '$scope', 'checkLogin', loginController]);

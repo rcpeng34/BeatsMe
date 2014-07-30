@@ -1,6 +1,7 @@
 'use strict';
 
-var sentenceController = function ($scope, $http, checkLogin, songqueue){
+var sentenceController = function ($rootScope, $scope, $http, checkLogin, songqueue){
+  $rootScope.bodyClass = 'sentence';
 
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
@@ -62,4 +63,4 @@ var sentenceController = function ($scope, $http, checkLogin, songqueue){
 };
 
 angular.module('beatsMeApp')
-  .controller('SentenceCtrl', ['$scope', '$http','checkLogin', 'songqueue', sentenceController]);
+  .controller('SentenceCtrl', ['$rootScope','$scope', '$http','checkLogin', 'songqueue', sentenceController]);

@@ -1,6 +1,7 @@
 'use strict';
 
-var exploreController = function($scope, $http, checkLogin, songqueue){
+var exploreController = function($rootScope, $scope, $http, checkLogin, songqueue){
+  $rootScope.bodyClass = 'explore';
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
       checkLogin.beatsOauth();
@@ -60,4 +61,4 @@ var exploreController = function($scope, $http, checkLogin, songqueue){
 };
 
 angular.module('beatsMeApp')
-  .controller('ExploreCtrl', ['$scope', '$http', 'checkLogin', 'songqueue', exploreController]);
+  .controller('ExploreCtrl', ['$rootScope','$scope', '$http', 'checkLogin', 'songqueue', exploreController]);
