@@ -99,7 +99,11 @@ var songqueue = function($rootScope, checkLogin){
       bam.pause();
     },
     play: function(){
-      bam.play();
+      if (bam.paused){
+        bam.play();
+      } else {
+        bam.pause();
+      }
     },
     clear: function(){
       playList = [];

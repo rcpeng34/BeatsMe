@@ -18,9 +18,6 @@ var PlayerController = function ($scope, $http, checkLogin, songqueue) {
   $scope.play = function(){
     songqueue.play();
   };
-  $scope.pause = function(){
-    songqueue.pause();
-  };
   $scope.previous = function(){
     songqueue.previous();
   };
