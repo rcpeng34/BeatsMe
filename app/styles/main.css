@@ -1,19 +1,25 @@
 /* Space out content a bit */
 
 /* Shared */
+h1 {
+  color: #BC1F5D;
+}
+h3 {
+  color: #652DB0;
+}
 .bodyLogin {
   background-color: black;
   background-image: url("/images/loginbackgroundleft.jpg");
-  background-position: left bottom;
+  background-position: left top;
   background-repeat:no-repeat;
 }
 
 .bodyExplore {
-  background-color: green;
+  background-color: #cccccc;
 }
 
 .bodySentence {
-  background-color: red
+  background-color: #cccccc;
 }
 
 .navbar {
@@ -38,6 +44,60 @@
   background-color: #E31837;
   border: 0;
 }
+
+/* CSS for explore view */
+
+.tileSet{
+  overflow: hidden;
+  background-color: #000000;
+}
+.tile {
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  color: #ffffff;
+  border: solid;
+  border-width: 10px;
+  border-color: #000000;
+  float:left;
+  height: 400px;
+  width: 400px;
+}
+
+.tileImg {
+  z-index: 1;
+  position:relative;
+  height: 380px;
+  width: 380px;
+}
+.dim {
+  opacity: 0.5;
+}
+.playGlyph {
+  z-index: 3;
+  position: absolute;
+  color: #ffffff;
+}
+
+/* CSS for sentence view */
+.sentenceContainer {
+  overflow: hidden;
+}
+.sentence {
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+select {
+  background-color: #cccccc;
+  color: #E31837;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  font-size: 24px;
+}
+
 
 
 .header,
@@ -69,11 +129,14 @@
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 850px;
   }
 }
 .container-narrow > hr {
-  margin: 30px 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto  ;
+
 }
 
 

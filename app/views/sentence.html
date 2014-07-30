@@ -1,11 +1,12 @@
 <h1>The Sentence</h1>
-
-<h3>I'm</h3>
-<select ng-model="place" ng-options="place.display for place in places"></select>
-<h3>& Feeling</h3>
-<select ng-model="activity" ng-options="activity.display for activity in activities"></select>
-<h3>With</h3>
-<select ng-model="person" ng-options="person.display for person in people"></select>
-<h3>To</h3>
-<select ng-model="genre" ng-options="genre.display for genre in genres"></select>
-<button ng-click="getSentence()">Play</button>
+<div class="sentenceContainer">
+  <h3 class="sentence">I'm &nbsp;</h3>
+  <select class="sentence" ng-model="place" ng-options="place.display for place in places"></select>
+  <h3 class="sentence">&nbsp; & Feeling &nbsp;</h3>
+  <select class="sentence" ng-model="activity" ng-options="activity.display for activity in activities"></select>
+  <h3 class="sentence">&nbsp; With &nbsp;</h3>
+  <select class="sentence" ng-model="person" ng-options="person.display for person in people"></select>
+  <h3 class="sentence">&nbsp; To &nbsp;</h3>
+  <select class="sentence" ng-model="genre" ng-options="genre.display for genre in genres"></select>
+  <button class="sentence" ng-click="getSentence()">Play</button>
+<div>

@@ -1,11 +1,26 @@
-<div class="tile" ng-repeat="highlight in highlights">
-  <h4>{{highlight.content.type}}</h4>
-  <p>{{highlight.content.name}}{{highlight.content.title}}</p>
-  <p>{{highlight.blurb[0]}}</p>
-  <p>{{highlight.blurb[1]}}</p>
-  <p>{{highlight.blurb[2]}}</p>
-  <p>{{highlight.content.description}}</p>
-  <h2>{{highlight.img}}</h2>
-  <img ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'playlist'" src="https://partner.api.beatsmusic.com/v1/api/playlists/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
-  <img ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'album'" src="https://partner.api.beatsmusic.com/v1/api/albums/{{highlight.content.id}}/images/default?client_id=bpmybfzwbfy84mgf8gewhg4w" />
+<h1>Explore</h1>
+<h3>Featured playlists and albums, click an image to play!</h3>
+<div class="tileSet">
+  <div ng-repeat="highlight in highlights">
+<!--     <h4>{{highlight.content.type}}</h4>
+    <p>{{highlight.content.name}}{{highlight.content.title}}</p>
+    <p>{{highlight.blurb[0]}}</p>
+    <p>{{highlight.blurb[1]}}</p>
+    <p>{{highlight.blurb[2]}}</p>
+    <p>{{highlight.content.description}}</p>
+    <h2>{{highlight.img}}</h2> -->
+    <div class="tile">
+      <img class="tileImg" ng-class="{dim: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'playlist'" src="https://partner.api.beatsmusic.com/v1/api/playlists/{{highlight.content.id}}/images/default?size=large&client_id=bpmybfzwbfy84mgf8gewhg4w"> 
+      </img>
+      <img class="tileImg" ng-class="{dim: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-click="play(highlight.content.id, highlight.content.refs)" ng-if="highlight.musicType === 'album'" src="https://partner.api.beatsmusic.com/v1/api/albums/{{highlight.content.id}}/images/default?size=large&client_id=bpmybfzwbfy84mgf8gewhg4w">
+      <img/>
+    </div>
+    <div class="tile">
+      <p>{{highlight.content.name}}{{highlight.content.title}}</p>
+      <p>{{highlight.blurb[0]}}</p>
+      <p>{{highlight.blurb[1]}}</p>
+      <p>{{highlight.blurb[2]}}</p>
+      <p>{{highlight.content.description}}</p>
+    </div>
+  </div>
 </div>
