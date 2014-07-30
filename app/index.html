@@ -55,7 +55,7 @@
     <div class="container" ng-view=""></div>
 
     <!-- Beats player div -->
-    <div class="beatsPlayer" ng-controller="PlayerCtrl as player">
+    <div ng-controller="PlayerCtrl as player" ng-hide="bodyClass == 'login'">
       <div>
         <h5 ngModel="$scope">Previous: {{songArray[0]}}</h5>
         <h5 ngModel="$scope">Current: {{songArray[1]}}</h5>
