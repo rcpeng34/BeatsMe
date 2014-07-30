@@ -15,13 +15,15 @@ angular.module('beatsMeApp')
     var token = retrieveToken();
     var userID = null;
     
-   $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
-    .success(function(response){
-      userID = response.result.user_context;
-    })
-    .error(function(response, status){
-      console.log('error in getUser http request status ', status, '|', response);
-    });
+    if (token){
+     $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
+      .success(function(response){
+        userID = response.result.user_context;
+      })
+      .error(function(response, status){
+        console.log('error in getUser http request status ', status, '|', response);
+      });
+    }
 
 
     // Public API here
