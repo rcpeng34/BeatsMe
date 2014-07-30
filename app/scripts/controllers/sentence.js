@@ -29,7 +29,7 @@ var sentenceController = function ($scope, $http, checkLogin, songqueue){
       console.log('error in http req getting sentence options with status', status, '|', response);
     });
 
-  $scope.playSentence = function(){
+  $scope.getSentence = function(skippedID){
     if ($scope.place && $scope.activity && $scope.person && $scope.genre){
       songqueue.sentenceOn();
       $http({method: 'post', url: 'https://partner.api.beatsmusic.com/v1/api/users/' + userID + '/recs/the_sentence?'
@@ -39,11 +39,14 @@ var sentenceController = function ($scope, $http, checkLogin, songqueue){
         + '&genre=' + $scope.genre.id
         + '&time_zone=-0800&access_token=' + token})
       .success(function(response){
+        console.log('the sentence has # songs ', response.data.length);
         songqueue.clear();
         for (var i = 0; i < response.data.length; i++){
           songqueue.add(response.data[i].id);
         }
-        songqueue.next();
+        if (!skippedID){
+          songqueue.next();
+        }
       })
       .error(function(response, status){
         console.log('errored in posting the sentence with status ', status, '|', response);
@@ -52,6 +55,10 @@ var sentenceController = function ($scope, $http, checkLogin, songqueue){
       alert('Please complete the sentence you\'re feeling');
     }
   };
+
+  $scope.$on('getSentence', function(event, args){
+    $scope.getSentence(args[0]);
+  });
 };
 
 angular.module('beatsMeApp')

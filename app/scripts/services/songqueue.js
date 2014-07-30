@@ -55,6 +55,9 @@ var songqueue = function($rootScope, checkLogin){
       bam.identifier = playList.shift();
       bam.load();
     }
+    if (sentence && playList.length < 1) {
+      $rootScope.$broadcast('getSentence', [true]);
+    }
     $rootScope.$broadcast('playerChanged', [finishList[finishList.length-1], bam.identifier, playList[0]]);
   };
 
