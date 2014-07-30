@@ -1,6 +1,6 @@
 'use strict';
 
-var sentenceController = function ($scope, $http, checkLogin){
+var sentenceController = function ($scope, $http, checkLogin, songqueue){
 
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
@@ -28,7 +28,30 @@ var sentenceController = function ($scope, $http, checkLogin){
     .error(function(response, status){
       console.log('error in http req getting sentence options with status', status, '|', response);
     });
+
+  $scope.playSentence = function(){
+    if ($scope.place && $scope.activity && $scope.person && $scope.genre){
+      $http({method: 'post', url: 'https://partner.api.beatsmusic.com/v1/api/users/' + userID + '/recs/the_sentence?'
+        + 'place=' + $scope.place.id
+        + '&activity=' + $scope.activity.id
+        + '&people=' + $scope.person.id
+        + '&genre=' + $scope.genre.id
+        + '&time_zone=-0800&access_token=' + token})
+      .success(function(response){
+        songqueue.clear();
+        for (var i = 0; i < response.data.length; i++){
+          songqueue.add(response.data[i].id);
+        }
+        songqueue.next();
+      })
+      .error(function(response, status){
+        console.log('errored in posting the sentence with status ', status, '|', response);
+      });
+    } else {
+      alert('Please complete the sentence you\'re feeling');
+    }
+  };
 };
 
 angular.module('beatsMeApp')
-  .controller('SentenceCtrl', ['$scope', '$http','checkLogin', sentenceController]);
+  .controller('SentenceCtrl', ['$scope', '$http','checkLogin', 'songqueue', sentenceController]);
