@@ -1,10 +1,45 @@
 /* Space out content a bit */
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+/* Shared */
+.bodyLogin {
+  background-color: black;
+  background-image: url("/images/loginbackgroundleft.jpg");
+  background-position: left bottom;
+  background-repeat:no-repeat;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+.bodyExplore {
+  background-color: green;
+}
+
+.bodySentence {
+  background-color: red
+}
+
+.navbar {
+  background-color: #000000;
+  border-radius: 0;
+  border: 0;
+  color: #666666;
+}
+
+/* CSS for Login view */
+.jumbotron {
+  color: #666666;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  width: 60%;
+  margin: 0 auto;
+  background-color:#cccccc;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+  background-color: #E31837;
+  border: 0;
+}
+
+
 .header,
 .marketing,
 .footer {
@@ -41,23 +76,6 @@ body {
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -67,13 +85,5 @@ body {
   .footer {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
   }
 }
