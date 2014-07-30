@@ -107,6 +107,9 @@ var songqueue = function($rootScope, checkLogin){
     get: function(){
       // returns an array of track ID [just_played, current, next]
       return [finishList[finishList.length-1], bam.identifier, playList[0]];
+    },
+    volume: function(num){
+      bam.volume = num;
     }
   };
 };

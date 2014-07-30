@@ -99,6 +99,12 @@ select {
 }
 
 
+/* CSS for player */
+input[type="range"] {
+/*  -webkit-appearance: slider-vertical;
+  width: 10px;
+  height: 200px;*/
+}
 
 .header,
 .marketing,

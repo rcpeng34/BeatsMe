@@ -9,6 +9,12 @@ var PlayerController = function ($scope, $http, checkLogin, songqueue) {
   var token = checkLogin.getToken();
   var emptySong = {artist: 'None', song: 'None', id: 'None'};
   $scope.songArray = [emptySong, emptySong, emptySong];
+  $scope.volume = 0.5;
+
+
+  $scope.volChange = function(){
+    songqueue.volume($scope.volume);
+  };
   $scope.play = function(){
     songqueue.play();
   };

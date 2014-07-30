@@ -65,6 +65,7 @@
       <button ng-click="play()">Play</button>
       <button ng-click="pause()">Pause</button>
       <button ng-click="next()">Next</button>
+      <input type="range" ng-model="volume" ng-change="volChange()" min="0" max="1" step="0.1">
     </div>
 
     <!--[if lt IE 9]>
