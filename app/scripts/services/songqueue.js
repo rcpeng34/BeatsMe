@@ -5,9 +5,6 @@ var songqueue = function($rootScope, checkLogin){
   var finishList = [];
 
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
-  if (!checkLogin.getToken()){
-      checkLogin.beatsOauth();
-    }
   var token = checkLogin.getToken();
   var sentence = false;
 
