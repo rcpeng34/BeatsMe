@@ -5,7 +5,7 @@ var sentenceController = function ($rootScope, $scope, $http, checkLogin, songqu
 
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
-      checkLogin.beatsOauth();
+      window.location = '/#/login';
     }
   var token = checkLogin.getToken();
   var userID = checkLogin.getUserID();

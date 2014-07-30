@@ -3,9 +3,7 @@
 var PlayerController = function ($scope, $http, checkLogin, songqueue) {
   // set token and key
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
-  if (!checkLogin.getToken()){
-      checkLogin.beatsOauth();
-    }
+
   var token = checkLogin.getToken();
   var emptySong = {artist: 'None', song: 'None', id: 'None'};
   $scope.songArray = [emptySong, emptySong, emptySong];

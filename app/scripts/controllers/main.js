@@ -1,12 +1,11 @@
 'use strict';
 
 var loginController = function ($rootScope, $scope, checkLogin) {
+  if (checkLogin.getToken()){
+    window.location = '/#/explore';
+  }
   $rootScope.bodyClass = 'login';
   $scope.OAuth = checkLogin.beatsOauth;
-  if (!checkLogin.getToken()){
-    checkLogin.beatsOauth();
-  }
-  var token = checkLogin.getToken();
 };
 
 angular.module('beatsMeApp')

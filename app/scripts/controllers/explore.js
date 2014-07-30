@@ -4,7 +4,7 @@ var exploreController = function($rootScope, $scope, $http, checkLogin, songqueu
   $rootScope.bodyClass = 'explore';
   var key = 'bpmybfzwbfy84mgf8gewhg4w';
   if (!checkLogin.getToken()){
-      checkLogin.beatsOauth();
+      window.location = '/#/login';
     }
   var token = checkLogin.getToken();
 
@@ -61,4 +61,4 @@ var exploreController = function($rootScope, $scope, $http, checkLogin, songqueu
 };
 
 angular.module('beatsMeApp')
-  .controller('ExploreCtrl', ['$rootScope','$scope', '$http', 'checkLogin', 'songqueue', exploreController]);
+  .controller('ExploreCtrl', ['$rootScope','$scope', '$http','checkLogin', 'songqueue', exploreController]);
