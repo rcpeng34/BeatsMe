@@ -55,17 +55,27 @@
     <div class="container" ng-view=""></div>
 
     <!-- Beats player div -->
-    <div ng-controller="PlayerCtrl as player" ng-hide="bodyClass == 'login'">
-      <div>
-        <h5 ngModel="$scope">Previous: {{songArray[0]}}</h5>
-        <h5 ngModel="$scope">Current: {{songArray[1]}}</h5>
-        <h5 ngModel="$scope">Next: {{songArray[2]}}</h5>
+    <div class="player" ng-controller="PlayerCtrl as player" ng-hide="bodyClass == 'login'">
+
+      <div class="slider">
+        <input type="range" ng-model="volume" ng-change="volChange()" min="0" max="1" step="0.1">
       </div>
-      <button ng-click="previous()">Prev</button>
-      <button ng-click="play()">Play</button>
-      <button ng-click="pause()">Pause</button>
-      <button ng-click="next()">Next</button>
-      <input type="range" ng-model="volume" ng-change="volChange()" min="0" max="1" step="0.1">
+      <div class="controlContainer">
+        <div class="playerButtonDiv"><button class="playerButton" ng-click="previous()"><span class="glyphicon glyphicon-fast-backward"></span></button></div>
+        <div class="playerButtonDiv"><button class="playerButton" ng-click="play()"><span class="glyphicon glyphicon-step-forward"></span></button></div>
+        <div class="playerButtonDiv"><button class="playerButton" ng-click="next()"><span class="glyphicon glyphicon-fast-forward"></span></button></div>
+      </div>
+      <div class="songContainer">
+        <div id="playerPrevious">
+          <h5 ngModel="$scope">{{songArray[0].title}} - {{songArray[0].artist}}</h5>
+        </div>
+        <div id="playerCurrent">
+          <h5 ngModel="$scope">{{songArray[1].title}} - {{songArray[1].artist}}</h5>
+        </div>
+        <div id="playerNext">
+          <h5 ngModel="$scope">{{songArray[2].title}} - {{songArray[2].artist}}</h5>
+        </div>
+      </div>
     </div>
 
     <!--[if lt IE 9]>

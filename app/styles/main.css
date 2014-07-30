@@ -101,10 +101,61 @@ select {
 
 /* CSS for player */
 input[type="range"] {
-/*  -webkit-appearance: slider-vertical;
-  width: 10px;
-  height: 200px;*/
+  -webkit-appearance: slider-vertical;
+  width: 20px;
+  height: 90px;
 }
+
+h5 {
+  margin-top: -33px;
+  margin-left: 5px;
+}
+.player {
+  overflow: hidden;
+  position: fixed;
+  top: 85%;
+  left: 1%;
+}
+.songContainer {
+  float: left;
+}
+.controlContainer {
+  float: left;
+}
+.slider {
+  float: left;
+}
+
+.playerButtonDiv {
+  height:30px;
+  width: 60px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.playerButton {
+  height:30px;
+  width: 60px;
+  background-color: #000000;
+  color: #E31837;
+  border: 0px;
+}
+
+#playerPrevious, #playerNext{
+  right: 0px;
+  white-space: pre-wrap;
+  width: 400px;
+  height: 30px;
+  background-color:#89278E;
+}
+
+#playerCurrent {
+  white-space: pre-wrap;
+  width: 500px;
+  height: 30px;
+  background-color:#BC1F5D;
+}
+
 
 .header,
 .marketing,
