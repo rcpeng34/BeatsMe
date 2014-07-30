@@ -1,11 +1,10 @@
 <h1>The Sentence</h1>
 
 <h3>I'm</h3>
-<select ng-model="imSentence" ng-options="imPhrase for imPhrase in imPhrases"></select>
+<select ng-model="place" ng-options="place.display for place in places"></select>
 <h3>& Feeling</h3>
-<select ng-model="feelingSentence" ng-options="feelingPhrase for feelingPhrase in feelingPhrases"></select>
+<select ng-model="activity" ng-options="activity.display for activity in activities"></select>
 <h3>With</h3>
+<select ng-model="people" ng-options="person.display for person in people"></select>
 <h3>To</h3>
-
-<h1>user id</h1>
-<p>{{userID}}</p>
+<select ng-model="genre" ng-options="genre.display for genre in genres"></select>
