@@ -9,6 +9,11 @@ h1 {
 h3 {
   color: #ffffff;
 }
+
+body {
+  margin-top: 75px;
+}
+
 .bodyLogin {
   background-color: black;
   background-image: url("/images/loginbackgroundleft.jpg");
