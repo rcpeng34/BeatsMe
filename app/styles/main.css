@@ -3,9 +3,10 @@
 /* Shared */
 h1 {
   color: #BC1F5D;
+  letter-spacing: -2px;
 }
 h3 {
-  color: #652DB0;
+  color: #ffffff;
 }
 .bodyLogin {
   background-color: black;
@@ -15,11 +16,18 @@ h3 {
 }
 
 .bodyExplore {
-  background-color: #cccccc;
+  background-color: black;
+  background-image: url("/images/explore.jpg");
+  background-position: left top;
+  background-attachment: fixed;
+  background-repeat:no-repeat;
 }
 
 .bodySentence {
-  background-color: #cccccc;
+  background-color: black;
+  background-image: url("/images/sentence.jpg");
+  background-position: left top;
+  background-repeat:no-repeat;
 }
 
 .navbar {
