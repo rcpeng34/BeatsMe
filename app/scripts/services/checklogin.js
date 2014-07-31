@@ -34,7 +34,7 @@ angular.module('beatsMeApp')
       beatsOauth : function(){
         window.location = 'https://partner.api.beatsmusic.com/v1/oauth2/authorize?'
           + '&response_type=token'
-          + '&redirect_uri=http://localhost:9000/'
+          + '&redirect_uri=http://beatsmusic.azurewebsites.net/'
           + '&client_id=BPMYBFZWBFY84MGF8GEWHG4W';
       },
       getUserID : function(){
