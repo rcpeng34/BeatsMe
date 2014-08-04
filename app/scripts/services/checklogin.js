@@ -16,13 +16,20 @@ angular.module('beatsMeApp')
     var userID = null;
     
     if (token){
-     $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
-      .success(function(response){
-        userID = response.result.user_context;
-      })
-      .error(function(response, status){
-        console.log('error in getUser http request status ', status, '|', response);
-      });
+     // $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
+     //  .success(function(response){
+     //    userID = response.result.user_context;
+     //  })
+     //  .error(function(response, status){
+     //    console.log('error in getUser http request status ', status, '|', response);
+     //  });
+      $http({method: 'GET', url: '/beatsID/' +   token})
+        .success(function(response){
+          userID = response;
+        })
+        .error(function(response, status){
+          console.log('error in getUser http request status ', status, '|', response);
+        });
     }
 
 
