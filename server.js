@@ -9,7 +9,6 @@ var httpport = process.env.port || 9000;
 
 var server = app.listen(httpport, function() {
     console.log('Listening on port %d', '|', server.address().port, '|' + typeof(server.address().port));
-    console.log('process.env.port', process.env.port);
 });
 
 // Serve up content from public directory
