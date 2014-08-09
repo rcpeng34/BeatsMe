@@ -35,7 +35,7 @@ angular.module('beatsMeApp')
         window.location = 'https://partner.api.beatsmusic.com/v1/oauth2/authorize?'
           + '&response_type=token'
           + '&redirect_uri=http://beats.richardpeng.io/'
-          + '&client_id=BPMYBFZWBFY84MGF8GEWHG4W';
+          + '&client_id=6rsmzpmvwfhacmw6hdc33c7z';
       },
       getUserID : function(){
         return userID;

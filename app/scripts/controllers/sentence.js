@@ -3,7 +3,7 @@
 var sentenceController = function ($rootScope, $scope, $http, checkLogin, songqueue){
   $rootScope.bodyClass = 'sentence';
 
-  var key = 'bpmybfzwbfy84mgf8gewhg4w';
+  var key = '6rsmzpmvwfhacmw6hdc33c7z';
   if (!checkLogin.getToken()){
       window.location = '/#/login';
     }
