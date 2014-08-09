@@ -4,7 +4,7 @@ var songqueue = function($rootScope, checkLogin){
   var playList = [];
   var finishList = [];
 
-  var key = 'bpmybfzwbfy84mgf8gewhg4w';
+  var key = '6rsmzpmvwfhacmw6hdc33c7z';
   var token = checkLogin.getToken();
   var sentence = false;
 
