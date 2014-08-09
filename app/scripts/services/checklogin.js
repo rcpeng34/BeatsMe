@@ -16,20 +16,13 @@ angular.module('beatsMeApp')
     var userID = null;
     
     if (token){
-     // $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
-     //  .success(function(response){
-     //    userID = response.result.user_context;
-     //  })
-     //  .error(function(response, status){
-     //    console.log('error in getUser http request status ', status, '|', response);
-     //  });
-      $http({method: 'GET', url: '/beatsID/' +   token})
-        .success(function(response){
-          userID = response;
-        })
-        .error(function(response, status){
-          console.log('error in getUser http request status ', status, '|', response);
-        });
+     $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/me?access_token=' + retrieveToken()})
+      .success(function(response){
+        userID = response.result.user_context;
+      })
+      .error(function(response, status){
+        console.log('error in getUser http request status ', status, '|', response);
+      });
     }
 
 
@@ -42,7 +35,7 @@ angular.module('beatsMeApp')
         window.location = 'https://partner.api.beatsmusic.com/v1/oauth2/authorize?'
           + '&response_type=token'
           + '&redirect_uri=http://localhost:9000/'
-          + '&client_id=BPMYBFZWBFY84MGF8GEWHG4W';
+          + '&client_id=6rsmzpmvwfhacmw6hdc33c7z';
       },
       getUserID : function(){
         return userID;
