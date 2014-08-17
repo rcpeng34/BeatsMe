@@ -2,7 +2,7 @@
 
 var exploreController = function($rootScope, $scope, $http, checkLogin, songqueue){
   $rootScope.bodyClass = 'explore';
-  var key = '6rsmzpmvwfhacmw6hdc33c7z';
+  $scope.key = '6rsmzpmvwfhacmw6hdc33c7z';
   if (!checkLogin.getToken()){
       window.location = '/#/login';
     }
@@ -13,7 +13,7 @@ var exploreController = function($rootScope, $scope, $http, checkLogin, songqueu
   var ePicksDone = false;
   $scope.highlights = [];
 
-  $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/featured?client_id=' + key})
+  $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/featured?limit=20&offset=0&client_id=' + $scope.key})
     .success(function(data){
       $scope.highlights = $scope.highlights.concat(data.data);
       featuredDone = true;
@@ -22,7 +22,7 @@ var exploreController = function($rootScope, $scope, $http, checkLogin, songqueu
     .error(function(data){
       console.log('error|', data);
     });
-  $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/editor_picks?client_id=' + key})
+  $http({method: 'GET', url: 'https://partner.api.beatsmusic.com/v1/api/discoveries/editor_picks?limit=20&offset=0&client_id=' + $scope.key})
     .success(function(data){
       $scope.highlights = $scope.highlights.concat(data.data);
       console.log($scope.highlights);
